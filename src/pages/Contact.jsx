@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import './con.css';
-export default class compte extends React.Component {
+export default class Contact extends React.Component {
   
   constructor(props) {
     super(props);
