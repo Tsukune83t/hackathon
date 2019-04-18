@@ -1,24 +1,29 @@
-import React from 'react';
-import axios from 'axios';
+import React, { Component } from 'react';
+import { Row, Col } from 'reactstrap';
 import MyNavbar from '../components/header/Navbar';
-export default class PersonList extends React.Component {
-  state = {
-    persons: []
-  }
 
-  componentDidMount() {
-    axios.get('http://easteregg.wildcodeschool.fr/api/characters')
-      .then(res => {
-        const persons = res.data;
-        this.setState({ persons });
-      });
-  }
-
+export default class Quete extends Component {
   render() {
     return (
-      <ul>
-        { this.state.persons.map(person => <li>{person.name}</li>)}
-      </ul>
+      <div>
+       
+        <div className="container-fluid backg">
+          <MyNavbar />
+        
+          <Row>
+            <Col sm="3">
+            
+              <h1>ccuiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiisssineeeeeee</h1>
+            </Col>
+            <Col sm="6">
+              <h1>colonne2</h1>
+            </Col>
+            <Col sm="3">
+              <h1>colonne3></h1>
+            </Col>
+          </Row>
+        </div>
+      </div>
     );
   }
 }

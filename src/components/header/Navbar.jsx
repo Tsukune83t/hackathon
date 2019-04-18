@@ -32,7 +32,7 @@ export default class Example extends React.Component {
           <NavLink  className='nav-link' to="/"> Home </NavLink> <span class="sr-only">(current)</span>
           <NavLink className='nav-link' to="/Quete"> Quete </NavLink>
           <NavLink className='nav-link' to="/Cuisine"> cuisine </NavLink>
-          <NavLink className='nav-link' to="/Quete"> Quete </NavLink>
+       
           <NavLink className='nav-link' to="/contact"> Contact </NavLink>
 
           <NavbarToggler onClick={this.toggle} />
