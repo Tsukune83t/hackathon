@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import Content from './components/content/Content.jsx'
+import Content from './components/content/Content.jsx';
 import Routeur from './components/Routeur';
+import Header from './components/Header.jsx';
+import Footer from './components/footer.jsx';
+
 class App extends Component {
   render() {
     return (
