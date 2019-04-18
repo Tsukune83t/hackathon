@@ -26,24 +26,7 @@ export default class Home extends Component {
             <Col sm="4">
               <Fiche color="danger" />
             </Col>
-            <Col sm="4">
-              <Fiche />
-            </Col>
-            <Col sm="4">
-              <Fiche />
-            </Col>
-          </Row>
-
-          <Row>
-            <Col sm="4">
-              <Fiche />
-            </Col>
-            <Col sm="4">
-              <Fiche />
-            </Col>
-            <Col sm="4">
-              <Fiche />
-            </Col>
+        
           </Row>
 
         </div>

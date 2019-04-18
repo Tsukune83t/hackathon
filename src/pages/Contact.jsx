@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import './con.css';
 import MyNavbar from '../components/header/Navbar';
