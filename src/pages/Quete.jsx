@@ -12,11 +12,13 @@ export default class Quete extends Component {
     };
     this.addEgg = this.addEgg.bind(this);
   }
+
   addEgg() {
     this.setState(state => ({
       egg: state.egg + 1 
     }));
   }
+
   render() {
     return (
   
