@@ -13,7 +13,7 @@ export default class Quete extends Component {
           <Row>
             <Col sm="3">
             
-              <h1>ccuiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiisssineeeeeee</h1>
+              <h3>ID {this.props.match.params.id}</h3>
             </Col>
             <Col sm="6">
               <h1>colonne2</h1>
