@@ -30,7 +30,7 @@ export default class Example extends React.Component {
         <Navbar color="warning" light expand="md">
          
           <NavLink  className='nav-link' to="/"> Home </NavLink> <span class="sr-only">(current)</span>
-          <NavLink className='nav-link' to="/Quete"> Quete </NavLink>
+          <NavLink className='nav-link' to="/Quete/90"> Quete </NavLink>
           <NavLink className='nav-link' to="/Cuisine"> cuisine </NavLink>
        
           <NavLink className='nav-link' to="/contact"> Contact </NavLink>

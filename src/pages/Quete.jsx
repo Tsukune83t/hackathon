@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Card, Button, CardHeader, CardFooter, CardBody,
+  CardTitle, CardText} from 'reactstrap';
 import MyNavbar from '../components/header/Navbar';
+import './con.css';
 
 export default class Quete extends Component {
   render() {
@@ -11,15 +13,16 @@ export default class Quete extends Component {
           <MyNavbar />
         
           <Row>
-            <Col sm="3">
-            
-              <h3>ID {this.props.match.params.id}</h3>
-            </Col>
-            <Col sm="6">
-              <h1>colonne2</h1>
-            </Col>
-            <Col sm="3">
-              <h1>colonne3></h1>
+            <Col sm="12">
+              <Card>
+                <CardHeader ClassName="title" >Header</CardHeader>
+                <CardBody>
+                  <CardTitle>Special Title Treatment</CardTitle>
+                  <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                  <Button>Go somewhere</Button>
+                </CardBody>
+                <CardFooter>Footer</CardFooter>
+              </Card>
             </Col>
           </Row>
         </div>
