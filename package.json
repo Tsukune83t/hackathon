@@ -17,14 +17,15 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
+<<<<<<< HEAD
   ],
   "devDependencies": {}
+=======
+  ]
+>>>>>>> 2a74224f5264e2f53c6ce2823f5322b51b545883
 }

@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import Api from './components/content/Api';
 import Condition from './condition_type/condition.jsx'
 
-class Content extends Component {
+export default class Content extends Component {
   render() {
     return (
       <div>
-        Test un
+        <Api />
         <Condition />
       </div>
     )
   }
 }
-
-export default Content
