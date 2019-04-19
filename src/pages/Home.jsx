@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import MyNavbar from '../components/header/Navbar';
 import Fiche from '../components/content/Card/fiche';
 import { Card, Button, CardTitle, CardText } from 'reactstrap';
+
 export default class Home extends Component {
+  constructor(props) {
+    super(props);
+    
+  }
+
+  
+
   render() {
     return (
       <div>
@@ -11,7 +19,7 @@ export default class Home extends Component {
         <div className="container-fluid backg">
 
           <MyNavbar />
-
+          <Container>
           <Row>
             <Col sm="12">
               <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
@@ -21,30 +29,20 @@ export default class Home extends Component {
               </Card>
             </Col>
           </Row>
-
+          </Container>
+        <Container>
           <Row>
-            <Col sm="4">
-              <Fiche color="danger" />
-            </Col>
-            <Col sm="4">
-              <Fiche />
-            </Col>
-            <Col sm="4">
-              <Fiche />
+            <Col sm="6">
+          <Row>
+            <Col sm="6">
+              <Fiche color="danger"
+                
+              />
             </Col>
           </Row>
-
-          <Row>
-            <Col sm="4">
-              <Fiche />
-            </Col>
-            <Col sm="4">
-              <Fiche />
-            </Col>
-            <Col sm="4">
-              <Fiche />
-            </Col>
+          </Col>
           </Row>
+          </Container>
 
         </div>
       </div>
