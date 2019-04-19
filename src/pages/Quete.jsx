@@ -13,10 +13,7 @@ const availableDatas = {
   species: 'De quelle espece est ce personage',
   gender: 'Quel est son sexe'
 }
-
 const availableKeys = ['name', 'origin', 'species', 'gender']
-
-
 
 export default class Quete extends Component {
   constructor(props) {
@@ -37,8 +34,6 @@ export default class Quete extends Component {
 
     this.addEgg = this.addEgg.bind(this);
   }
-
-
 
   componentDidMount() {
     this.fetchNewQuestion()
@@ -73,7 +68,6 @@ export default class Quete extends Component {
     this.fetchNewQuestion()
   }
 
-
   addEgg() {
     this.setState(state => ({
       egg: state.egg + 1
@@ -85,7 +79,6 @@ export default class Quete extends Component {
       modalOpen: !prevState.modalOpen
     }));
   }
-
 
   render() {
 
@@ -140,10 +133,12 @@ export default class Quete extends Component {
 
           </div>
           <ModalExample toogleAction={() => this.toggleModal()} isOpen={this.state.modalOpen} />
-        </Container>
-        <Footer />
 
+        </Container>
+
+        <Footer />
       </div>
+
     )
   }
 }
