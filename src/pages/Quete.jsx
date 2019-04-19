@@ -5,7 +5,7 @@ import MyNavbar from '../components/header/Navbar';
 import './que.css';
 import { Button } from 'reactstrap';
 import ModalExample from './modalee';
-import { ProgressBar } from 'react-step-progress-bar';
+import  Probar from '../components/header/Progressbar';
 
 const availableDatas = {
   name: 'Quel est le nom du ce personnage ?',
@@ -14,10 +14,13 @@ const availableDatas = {
 
 const availableKeys = ['name', 'origin']
 
+
+
 export default class Quete extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      percentage: 0,
       egg: 0,
       callApis: [],
       modalOpen: false,
@@ -27,6 +30,7 @@ export default class Quete extends Component {
       },
       currentQuestion: 'name'
     };
+    this.nextStep = this.nextStep.bind(this)
     this.addEgg = this.addEgg.bind(this);
   }
 
@@ -75,12 +79,27 @@ export default class Quete extends Component {
       modalOpen: !prevState.modalOpen
     }));
   }
+    
+  nextStep() {
+    if(this.state.percentage === 100) return 
+    this.setState({ percentage: this.state.percentage + 20 })
+  }
+  
 
   render() {
     console.log(this.state);
     return (
+     
       <div>
+     
+          <Probar percentage={this.state.percentage} />
         <Container>
+
+        <button 
+            onClick={this.nextStep}
+           >
+            Next Step
+          </button>  
           <p>{this.state.currentSelectedChar[this.state.currentQuestion]}</p>
           <div className="corps">
             <Row className="title" >
@@ -116,11 +135,13 @@ export default class Quete extends Component {
                
                   </Col>
                   )
-                })  
+                }) 
+  
               }
             </Row>
     
           </div>
+          <ModalExample toogleAction={() => this.toggleModal()} isOpen={this.state.modalOpen} /> 
         </Container>
       </div>
     )
