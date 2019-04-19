@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import './footer.scss';
+import { FaGithub } from 'react-icons/fa';
+import './footer.css';
 
 class Footer extends Component {
   render() {
     return (
       <div className="footer">
-        test
+        <FaGithub className="logos"/>
       </div>
     );
   }

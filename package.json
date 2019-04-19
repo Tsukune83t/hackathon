@@ -7,6 +7,7 @@
     "bootstrap": "^4.3.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-icons": "^3.6.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "reactstrap": "^8.0.0"
@@ -22,10 +23,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-<<<<<<< HEAD
-  ],
-  "devDependencies": {}
-=======
   ]
->>>>>>> 2a74224f5264e2f53c6ce2823f5322b51b545883
 }

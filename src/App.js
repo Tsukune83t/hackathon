@@ -3,18 +3,18 @@ import './App.css';
 import Content from './components/content/Content.jsx';
 import Routeur from './components/Routeur';
 import Header from './components/Header.jsx';
-import Footer from './components/footer.jsx';
+import Footer from './components/Footer.jsx';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
-        <Content />
         <React.Fragment>
+          <Header />
+          <Content />
           <Routeur />
+          <Footer />
         </React.Fragment>
-        <Footer />
       </div>
     );
   }
