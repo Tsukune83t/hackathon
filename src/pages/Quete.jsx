@@ -4,6 +4,7 @@ import MyNavbar from '../components/header/Navbar';
 import './que.css';
 import { Button } from 'reactstrap';
 import ModalExample from './modalee';
+import { ProgressBar } from 'react-step-progress-bar';
 
 export default class Quete extends Component {
   constructor(props) {
@@ -31,6 +32,7 @@ export default class Quete extends Component {
     return (
       <Container>
         <MyNavbar />
+        <ProgressBar />
         <div className="corps">
           <Row className="title" >
             <Col sm="12"><p>A cliqué {this.state.egg} fois</p> </Col>
