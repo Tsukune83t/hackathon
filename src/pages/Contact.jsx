@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import './con.css';
+import MyNavbar from '../components/header/Navbar';
+
 export default class Contact extends React.Component {
   
   constructor(props) {
@@ -50,6 +52,7 @@ export default class Contact extends React.Component {
   render() {
     return (
       <div >
+        <MyNavbar />
         <Form className="detailsforms" onSubmit={this.submitForm}>
           <FormGroup row>
             <Label for="username" sm={2}>Email</Label>

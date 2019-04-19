@@ -32,6 +32,7 @@ export default class Home extends Component {
           </Container>
         <Container>
           <Row>
+<<<<<<< HEAD
             <Col sm="6">
           <Row>
             <Col sm="6">
@@ -39,6 +40,12 @@ export default class Home extends Component {
                 
               />
             </Col>
+=======
+            <Col sm="4">
+              <Fiche color="danger" />
+            </Col>
+        
+>>>>>>> 2a74224f5264e2f53c6ce2823f5322b51b545883
           </Row>
           </Col>
           </Row>
