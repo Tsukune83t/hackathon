@@ -7,25 +7,13 @@ import { Button } from 'reactstrap';
 import ModalExample from './modalee';
 import { ProgressBar } from 'react-step-progress-bar';
 
-const availableDatas = {
-  name: 'Quel est le nom du ce personnage ?',
-  origin: "Quel est l'origine de ce personnage",
-}
-
-const availableKeys = ['name', 'origin']
-
 export default class Quete extends Component {
   constructor(props) {
     super(props);
     this.state = {
       egg: 0,
       callApis: [],
-      modalOpen: false,
-      currentSelectedChar: {
-        name: '',
-        origin: ''
-      },
-      currentQuestion: 'name'
+      modalOpen: false
     };
     this.addEgg = this.addEgg.bind(this);
   }
@@ -33,10 +21,6 @@ export default class Quete extends Component {
 
 
   componentDidMount() {
-    this.fetchNewQuestion()
-  }
-
-  fetchNewQuestion(){
     axios.get('http://easteregg.wildcodeschool.fr/api/characters')
       .then((res) => {
         const callApis = res.data;
@@ -47,20 +31,10 @@ export default class Quete extends Component {
           callApis.splice(index, 1)
           randomChars.push(randomChar)
         }
-        const currentQuestion = availableKeys[Math.floor(Math.random() * availableKeys.length)]
-        this.setState({ callApis: randomChars, currentSelectedChar: randomChars[Math.floor(Math.random() * randomChars.length)], currentQuestion});
+        this.setState({ callApis: randomChars });
       });
   }
 
-  checkIfValidResponse(response){
-    if(this.state.currentSelectedChar[this.state.currentQuestion] === response){
-      alert('Bonne réponse')
-      this.addEgg()
-    } else {
-      alert('Mauvaise réponse !')
-    }
-    this.fetchNewQuestion()
-  }
 
 
   addEgg() {
@@ -84,38 +58,35 @@ export default class Quete extends Component {
               <Col sm="12"><p>A cliqué {this.state.egg} fois</p> </Col>
             </Row >
             <Row className="centre">
-              <Col sm="12">
-                {
-                  availableDatas[this.state.currentQuestion]
-                }
-              </Col>
+              <Col sm="12">Le plus petit des deux?</Col>
               {
-                this.state.callApis.map((callApi, idx) => {
-                  if (idx >= 1){
-                    return null
-                  }
+                this.state.callApis.map((callApi) => {
                   return (
                     <React.Fragment>
-                      <Col sm="12" class="imagee" >
-                        <img max-height="200px" className="h-75 d-inline-block" src={callApi.image} className={`${callApi.name}1`} alt="okk" />
+                      <Col sm="6" class="imagee" >
+                        <img width="200px" className="h-75 d-inline-block" src={callApi.image} className={`${callApi.name}1`} alt="okk" />
                       </Col>
                     </React.Fragment>
                   )
                 })  
               }
             </Row>
-            <Row className="pied">
+            <Row>
               {
                 this.state.callApis.map((callApi) => {
                   return (
                   <Col sm="6"> 
-                    <Button color="warning" onClick={() => this.checkIfValidResponse(callApi[this.state.currentQuestion])} size="lg">{callApi[this.state.currentQuestion]}</Button>  
+                    <Button color="warning" onClick={() => this.toggleModal()} size="lg">{callApi.name}</Button>{this.props.buttonLabel}  
                   </Col>
                   )
                 })  
               }
             </Row>
-           
+            <Row className="pied">
+              <Col sm="12">
+                <ModalExample toogleAction={() => this.toggleModal()} isOpen={this.state.modalOpen} />
+              </Col>
+            </Row>
           </div>
         </Container>
       </div>
