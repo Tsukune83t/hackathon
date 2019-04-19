@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Row, Col, Container } from 'reactstrap';
 import MyNavbar from '../components/header/Navbar';
 import './que.css';
-import {Button, Progress} from 'reactstrap';
+import { Button, Progress } from 'reactstrap';
 import ModalExample from './modalee';
 import Footer from '../components/Footer';
 
@@ -14,7 +14,7 @@ const availableDatas = {
   gender: 'Quel est son sexe'
 }
 
-const availableKeys = ['name', 'origin','species','gender']
+const availableKeys = ['name', 'origin', 'species', 'gender']
 
 
 
@@ -34,7 +34,7 @@ export default class Quete extends Component {
       },
       currentQuestion: 'name'
     };
-   
+
     this.addEgg = this.addEgg.bind(this);
   }
 
@@ -56,16 +56,16 @@ export default class Quete extends Component {
           callApis.splice(index, 1)
         }
         const currentQuestion = availableKeys[Math.floor(Math.random() * availableKeys.length)]
-        const randomChar =  randomChars[Math.floor(Math.random() * randomChars.length)]
-        this.setState({ callApis: randomChars, currentSelectedChar: randomChar, currentQuestion});
+        const randomChar = randomChars[Math.floor(Math.random() * randomChars.length)]
+        this.setState({ callApis: randomChars, currentSelectedChar: randomChar, currentQuestion });
       });
   }
 
-  checkIfValidResponse(response){
-    if(this.state.currentSelectedChar[this.state.currentQuestion] === response){
-      if(this.state.percentage === 100) return 
-      this.setState({ percentage: this.state.percentage + 20 })
-      
+  checkIfValidResponse(response) {
+    if (this.state.currentSelectedChar[this.state.currentQuestion] === response) {
+      if (this.state.percentage === 100) return
+      this.setState({ percentage: this.state.percentage + 10 })
+
       this.addEgg()
     } else {
       this.toggleModal()
@@ -85,33 +85,19 @@ export default class Quete extends Component {
       modalOpen: !prevState.modalOpen
     }));
   }
-    
+
 
   render() {
-  
+
     return (
-     
+
       <div>
-           <MyNavbar />
-      
-
-    <div>
-     <Progress multi>
-        <Progress bar value="15">Meh</Progress>
-        <Progress bar color="success" value="30">Wow!</Progress>
-        <Progress bar color="info" value="25">Cool</Progress>
-        <Progress bar color="warning" value="20">20%</Progress>
-        <Progress bar color="danger" value="5">!!</Progress>
-      </Progress>
-    </div>
-
-    
-      <div className="progress-bar">
-    <Progress percentage={this.state.percentage} />
-    </div>
+        <MyNavbar />
+        <div className="progress-bar">
+          <Progress value={this.state.percentage}>{this.state.percentage}%</Progress>
+        </div>
         <Container>
 
-    
           {/* <p>{this.state.currentSelectedChar[this.state.currentQuestion]}</p> */}
           <div className="corps">
             <Row className="title" >
@@ -125,7 +111,7 @@ export default class Quete extends Component {
               </Col>
               {
                 this.state.callApis.map((callApi, idx) => {
-                  if (callApi.name !== this.state.currentSelectedChar.name){
+                  if (callApi.name !== this.state.currentSelectedChar.name) {
                     return null
                   }
                   return (
@@ -142,18 +128,18 @@ export default class Quete extends Component {
               {
                 this.state.callApis.map((callApi) => {
                   return (
-                  <Col sm="6" key={callApi.id}> 
-                    <Button color="warning" onClick={() => this.checkIfValidResponse(callApi[this.state.currentQuestion])} size="lg">{callApi[this.state.currentQuestion]}</Button>  
-               
-                  </Col>
+                    <Col sm="6" key={callApi.id}>
+                      <Button color="warning" onClick={() => this.checkIfValidResponse(callApi[this.state.currentQuestion])} size="lg">{callApi[this.state.currentQuestion]}</Button>
+
+                    </Col>
                   )
-                }) 
-  
+                })
+
               }
             </Row>
-    
+
           </div>
-          <ModalExample toogleAction={() => this.toggleModal()} isOpen={this.state.modalOpen} /> 
+          <ModalExample toogleAction={() => this.toggleModal()} isOpen={this.state.modalOpen} />
         </Container>
         <Footer />
 
