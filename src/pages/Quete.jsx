@@ -3,8 +3,9 @@ import axios from 'axios';
 import { Row, Col, Container } from 'reactstrap';
 import MyNavbar from '../components/header/Navbar';
 import './que.css';
-import { Button } from 'reactstrap';
+import {Button, Progress} from 'reactstrap';
 import ModalExample from './modalee';
+import Footer from '../components/Footer';
 
 const availableDatas = {
   name: 'Quel est le nom de ce personnage ?',
@@ -15,10 +16,13 @@ const availableDatas = {
 
 const availableKeys = ['name', 'origin','species','gender']
 
+
+
 export default class Quete extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      percentage: 0,
       egg: 0,
       callApis: [],
       modalOpen: false,
@@ -30,6 +34,7 @@ export default class Quete extends Component {
       },
       currentQuestion: 'name'
     };
+   
     this.addEgg = this.addEgg.bind(this);
   }
 
@@ -47,20 +52,23 @@ export default class Quete extends Component {
         for (let i = 0; i < 2; i++) {
           let randomChar = callApis[Math.floor(Math.random() * callApis.length)];
           let index = callApis.indexOf(randomChar)
-          callApis.splice(index, 1)
           randomChars.push(randomChar)
+          callApis.splice(index, 1)
         }
         const currentQuestion = availableKeys[Math.floor(Math.random() * availableKeys.length)]
-        this.setState({ callApis: randomChars, currentSelectedChar: randomChars[Math.floor(Math.random() * randomChars.length)], currentQuestion });
+        const randomChar =  randomChars[Math.floor(Math.random() * randomChars.length)]
+        this.setState({ callApis: randomChars, currentSelectedChar: randomChar, currentQuestion});
       });
   }
 
-  checkIfValidResponse(response) {
-    if (this.state.currentSelectedChar[this.state.currentQuestion] === response) {
-      alert('Bonne réponse')
+  checkIfValidResponse(response){
+    if(this.state.currentSelectedChar[this.state.currentQuestion] === response){
+      if(this.state.percentage === 100) return 
+      this.setState({ percentage: this.state.percentage + 20 })
+      
       this.addEgg()
     } else {
-      alert('Mauvaise réponse !')
+      this.toggleModal()
     }
     this.fetchNewQuestion()
   }
@@ -77,11 +85,34 @@ export default class Quete extends Component {
       modalOpen: !prevState.modalOpen
     }));
   }
+    
 
   render() {
+  
     return (
+     
       <div>
+           <MyNavbar />
+      
+
+    <div>
+     <Progress multi>
+        <Progress bar value="15">Meh</Progress>
+        <Progress bar color="success" value="30">Wow!</Progress>
+        <Progress bar color="info" value="25">Cool</Progress>
+        <Progress bar color="warning" value="20">20%</Progress>
+        <Progress bar color="danger" value="5">!!</Progress>
+      </Progress>
+    </div>
+
+    
+      <div className="progress-bar">
+    <Progress percentage={this.state.percentage} />
+    </div>
         <Container>
+
+    
+          {/* <p>{this.state.currentSelectedChar[this.state.currentQuestion]}</p> */}
           <div className="corps">
             <Row className="title" >
               <Col sm="12"><p>A cliqué {this.state.egg} fois</p> </Col>
@@ -94,11 +125,11 @@ export default class Quete extends Component {
               </Col>
               {
                 this.state.callApis.map((callApi, idx) => {
-                  if (idx >= 1) {
+                  if (callApi.name !== this.state.currentSelectedChar.name){
                     return null
                   }
                   return (
-                    <React.Fragment>
+                    <React.Fragment key={callApi.name}>
                       <Col sm="12" class="imagee" >
                         <img className="h-75 d-inline-block" src={callApi.image} className={`${callApi.name}1`} alt="okk" />
                       </Col>
@@ -111,16 +142,21 @@ export default class Quete extends Component {
               {
                 this.state.callApis.map((callApi) => {
                   return (
-                    <Col sm="6">
-                      <Button color="warning" onClick={() => this.checkIfValidResponse(callApi[this.state.currentQuestion])} size="lg">{callApi[this.state.currentQuestion]}</Button>
-                    </Col>
+                  <Col sm="6" key={callApi.id}> 
+                    <Button color="warning" onClick={() => this.checkIfValidResponse(callApi[this.state.currentQuestion])} size="lg">{callApi[this.state.currentQuestion]}</Button>  
+               
+                  </Col>
                   )
-                })
+                }) 
+  
               }
             </Row>
-
+    
           </div>
+          <ModalExample toogleAction={() => this.toggleModal()} isOpen={this.state.modalOpen} /> 
         </Container>
+        <Footer />
+
       </div>
     )
   }
