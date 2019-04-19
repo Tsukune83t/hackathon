@@ -32,19 +32,16 @@ export default class Home extends Component {
               </Card>
             </Col>
           </Row>
-          </Container>
-        <Container>
+    
           <Row>
-            <Col sm="6">
-          <Row>
-            <Col sm="6">
-              <Fiche color="danger"
-                
-              />
-            </Col>
-          </Row>
+             <Col sm="6">
+
+             
+              <Fiche color="danger" />       
           </Col>
           </Row>
+
+
           </Container>
 
         </div>

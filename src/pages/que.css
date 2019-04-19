@@ -43,6 +43,6 @@
     font-size: 2rem;
     color: #f8f8f8;
 }
-imagee {
-    
+img {
+    max-height: 140px;
 } 

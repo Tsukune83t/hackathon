@@ -44,11 +44,12 @@ export default class Quete extends Component {
         for (let i = 0; i < 2; i++) {
           let randomChar = callApis[Math.floor(Math.random() * callApis.length)];
           let index = callApis.indexOf(randomChar)
-          callApis.splice(index, 1)
           randomChars.push(randomChar)
+          callApis.splice(index, 1)
         }
         const currentQuestion = availableKeys[Math.floor(Math.random() * availableKeys.length)]
-        this.setState({ callApis: randomChars, currentSelectedChar: randomChars[Math.floor(Math.random() * randomChars.length)], currentQuestion});
+        const randomChar =  randomChars[Math.floor(Math.random() * randomChars.length)]
+        this.setState({ callApis: randomChars, currentSelectedChar: randomChar, currentQuestion});
       });
   }
 
@@ -57,7 +58,7 @@ export default class Quete extends Component {
       alert('Bonne réponse')
       this.addEgg()
     } else {
-      alert('Mauvaise réponse !')
+      this.toggleModal()
     }
     this.fetchNewQuestion()
   }
@@ -76,9 +77,11 @@ export default class Quete extends Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div>
         <Container>
+          <p>{this.state.currentSelectedChar[this.state.currentQuestion]}</p>
           <div className="corps">
             <Row className="title" >
               <Col sm="12"><p>A cliqué {this.state.egg} fois</p> </Col>
@@ -91,11 +94,11 @@ export default class Quete extends Component {
               </Col>
               {
                 this.state.callApis.map((callApi, idx) => {
-                  if (idx >= 1){
+                  if (callApi.name !== this.state.currentSelectedChar.name){
                     return null
                   }
                   return (
-                    <React.Fragment>
+                    <React.Fragment key={callApi.name}>
                       <Col sm="12" class="imagee" >
                         <img max-height="200px" className="h-75 d-inline-block" src={callApi.image} className={`${callApi.name}1`} alt="okk" />
                       </Col>
@@ -108,14 +111,15 @@ export default class Quete extends Component {
               {
                 this.state.callApis.map((callApi) => {
                   return (
-                  <Col sm="6"> 
+                  <Col sm="6" key={callApi.id}> 
                     <Button color="warning" onClick={() => this.checkIfValidResponse(callApi[this.state.currentQuestion])} size="lg">{callApi[this.state.currentQuestion]}</Button>  
+               
                   </Col>
                   )
                 })  
               }
             </Row>
-           
+    
           </div>
         </Container>
       </div>
