@@ -3,9 +3,9 @@ import axios from 'axios';
 import { Row, Col, Container } from 'reactstrap';
 import MyNavbar from '../components/header/Navbar';
 import './que.css';
-import { Button } from 'reactstrap';
+import {Button, Progress} from 'reactstrap';
 import ModalExample from './modalee';
-import  Probar from '../components/header/Progressbar';
+import Footer from '../components/Footer';
 
 const availableDatas = {
   name: 'Quel est le nom du ce personnage ?',
@@ -30,7 +30,7 @@ export default class Quete extends Component {
       },
       currentQuestion: 'name'
     };
-    this.nextStep = this.nextStep.bind(this)
+   
     this.addEgg = this.addEgg.bind(this);
   }
 
@@ -59,7 +59,9 @@ export default class Quete extends Component {
 
   checkIfValidResponse(response){
     if(this.state.currentSelectedChar[this.state.currentQuestion] === response){
-      alert('Bonne réponse')
+      if(this.state.percentage === 100) return 
+      this.setState({ percentage: this.state.percentage + 20 })
+      
       this.addEgg()
     } else {
       this.toggleModal()
@@ -80,27 +82,33 @@ export default class Quete extends Component {
     }));
   }
     
-  nextStep() {
-    if(this.state.percentage === 100) return 
-    this.setState({ percentage: this.state.percentage + 20 })
-  }
-  
 
   render() {
-    console.log(this.state);
+  
     return (
      
       <div>
-     
-          <Probar percentage={this.state.percentage} />
+           <MyNavbar />
+      
+
+    <div>
+     <Progress multi>
+        <Progress bar value="15">Meh</Progress>
+        <Progress bar color="success" value="30">Wow!</Progress>
+        <Progress bar color="info" value="25">Cool</Progress>
+        <Progress bar color="warning" value="20">20%</Progress>
+        <Progress bar color="danger" value="5">!!</Progress>
+      </Progress>
+    </div>
+
+    
+      <div className="progress-bar">
+    <Progress percentage={this.state.percentage} />
+    </div>
         <Container>
 
-        <button 
-            onClick={this.nextStep}
-           >
-            Next Step
-          </button>  
-          <p>{this.state.currentSelectedChar[this.state.currentQuestion]}</p>
+    
+          {/* <p>{this.state.currentSelectedChar[this.state.currentQuestion]}</p> */}
           <div className="corps">
             <Row className="title" >
               <Col sm="12"><p>A cliqué {this.state.egg} fois</p> </Col>
@@ -143,6 +151,8 @@ export default class Quete extends Component {
           </div>
           <ModalExample toogleAction={() => this.toggleModal()} isOpen={this.state.modalOpen} /> 
         </Container>
+        <Footer />
+
       </div>
     )
   }

@@ -27,25 +27,14 @@ export default class Example extends React.Component {
     return (
       <div>
         <Navbar color="warning" light expand="md">
-         
+      
           <NavLink  className='nav-link' to="/"> Home </NavLink> <span class="sr-only">(current)</span>
+
           <NavLink className='nav-link' to="/Quete/90"> Quete </NavLink>
-          <NavLink className='nav-link' to="/Cuisine"> cuisine </NavLink>
-          <NavLink className='nav-link' to="/progressbar"> bar </NavLink>
+       
           <NavLink className='nav-link' to="/contact"> Contact </NavLink>
 
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/components/">Components</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-              </NavItem>
-      
-            </Nav>
-          </Collapse>
+  
         </Navbar>
       </div>
     );

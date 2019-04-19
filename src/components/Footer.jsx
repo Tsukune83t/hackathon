@@ -1,11 +1,19 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { NavItem, NavLink } from 'reactstrap';
 
-export default class Footer extends Component {
+import './footer.css';
+
+class Footer extends Component {
   render() {
     return (
-      <div>
+      <div className="footer">
+        <NavItem>
+          <NavLink href="https://github.com/Tsukune83t/hackathon"></NavLink>
+        </NavItem>
         
       </div>
     );
   }
 }
+
+export default Footer;
