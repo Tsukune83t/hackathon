@@ -5,14 +5,15 @@ import MyNavbar from '../components/header/Navbar';
 import './que.css';
 import { Button } from 'reactstrap';
 import ModalExample from './modalee';
-import { ProgressBar } from 'react-step-progress-bar';
 
 const availableDatas = {
-  name: 'Quel est le nom du ce personnage ?',
+  name: 'Quel est le nom de ce personnage ?',
   origin: "Quel est l'origine de ce personnage",
+  species: 'De quelle espece est ce personage',
+  gender: 'Quel est son sexe'
 }
 
-const availableKeys = ['name', 'origin']
+const availableKeys = ['name', 'origin','species','gender']
 
 export default class Quete extends Component {
   constructor(props) {
@@ -23,7 +24,9 @@ export default class Quete extends Component {
       modalOpen: false,
       currentSelectedChar: {
         name: '',
-        origin: ''
+        origin: '',
+        species: '',
+        gender: '',
       },
       currentQuestion: 'name'
     };
@@ -36,7 +39,7 @@ export default class Quete extends Component {
     this.fetchNewQuestion()
   }
 
-  fetchNewQuestion(){
+  fetchNewQuestion() {
     axios.get('http://easteregg.wildcodeschool.fr/api/characters')
       .then((res) => {
         const callApis = res.data;
@@ -48,12 +51,12 @@ export default class Quete extends Component {
           randomChars.push(randomChar)
         }
         const currentQuestion = availableKeys[Math.floor(Math.random() * availableKeys.length)]
-        this.setState({ callApis: randomChars, currentSelectedChar: randomChars[Math.floor(Math.random() * randomChars.length)], currentQuestion});
+        this.setState({ callApis: randomChars, currentSelectedChar: randomChars[Math.floor(Math.random() * randomChars.length)], currentQuestion });
       });
   }
 
-  checkIfValidResponse(response){
-    if(this.state.currentSelectedChar[this.state.currentQuestion] === response){
+  checkIfValidResponse(response) {
+    if (this.state.currentSelectedChar[this.state.currentQuestion] === response) {
       alert('Bonne réponse')
       this.addEgg()
     } else {
@@ -91,31 +94,31 @@ export default class Quete extends Component {
               </Col>
               {
                 this.state.callApis.map((callApi, idx) => {
-                  if (idx >= 1){
+                  if (idx >= 1) {
                     return null
                   }
                   return (
                     <React.Fragment>
                       <Col sm="12" class="imagee" >
-                        <img max-height="200px" className="h-75 d-inline-block" src={callApi.image} className={`${callApi.name}1`} alt="okk" />
+                        <img className="h-75 d-inline-block" src={callApi.image} className={`${callApi.name}1`} alt="okk" />
                       </Col>
                     </React.Fragment>
                   )
-                })  
+                })
               }
             </Row>
             <Row className="pied">
               {
                 this.state.callApis.map((callApi) => {
                   return (
-                  <Col sm="6"> 
-                    <Button color="warning" onClick={() => this.checkIfValidResponse(callApi[this.state.currentQuestion])} size="lg">{callApi[this.state.currentQuestion]}</Button>  
-                  </Col>
+                    <Col sm="6">
+                      <Button color="warning" onClick={() => this.checkIfValidResponse(callApi[this.state.currentQuestion])} size="lg">{callApi[this.state.currentQuestion]}</Button>
+                    </Col>
                   )
-                })  
+                })
               }
             </Row>
-           
+
           </div>
         </Container>
       </div>

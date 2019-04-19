@@ -12,16 +12,19 @@
 }
 
 /*text*/
-.col-sm-8 {
+.card-name {
   display: flex;
   align-items:flex-end;
   justify-content: center;
 }
 
-.col-sm-4 {
+.card-img {
 
   padding-right: 1.5px !important;
 
+}
+.card-img img {
+  max-height: 100px;
 }
 
 .Vader {
