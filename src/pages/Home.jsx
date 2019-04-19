@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import MyNavbar from '../components/header/Navbar';
 import Fiche from '../components/content/Card/fiche';
+import Footer from '../components/Footer';
 import Probar from '../components/header/Progressbar';
 import { Card, Button, CardTitle, CardText } from 'reactstrap';
 
@@ -41,7 +42,7 @@ export default class Home extends Component {
 
 
           </Container>
-
+          <Footer />
         </div>
     
     );

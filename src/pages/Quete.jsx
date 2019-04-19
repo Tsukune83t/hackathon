@@ -154,10 +154,16 @@ export default class Quete extends Component {
     
           </div>
           <ModalExample toogleAction={() => this.toggleModal()} isOpen={this.state.modalOpen} /> 
-        </Container>
-        <Footer />
 
+
+
+
+       
+        </Container>
+  
+<Footer />
       </div>
+     
     )
   }
 }
