@@ -1,0 +1,48 @@
+.container {  
+  border: 1px solid black;
+  border-radius: 6px;
+  margin-bottom: 10px;  
+}
+
+/*change position img and title*/
+.cards{
+  display: flex;
+  flex-direction:row-reverse;
+  
+}
+
+/*text*/
+.col-sm-8 {
+  display: flex;
+  align-items:flex-end;
+  justify-content: center;
+}
+
+.col-sm-4 {
+
+  padding-right: 1.5px !important;
+
+}
+
+.Vader {
+  background-color: brown;
+  margin-top: 10px;
+
+}
+
+.Mystique {
+  background-color: rgb(16, 16, 197);
+
+}
+
+.Hellboy {
+  background-color:rgb(103, 103, 110);
+}
+.Catwoman{
+  background-color: rgb(229, 177, 177);
+}
+
+.Gandalf{
+  background-color: rgba(124, 83, 66, 0.815);
+}
+
