@@ -16,17 +16,33 @@
 .centre {
     padding: 20px;
     background-color: #e3e3e3;
-    height: 60vh;
+    height: 30vh;
     border-radius: 0  0 0 0;
+    font-size: 2rem;
+    font-family: 'Permanent Marker', cursive;
+    font-weight: bolder;
+   
+}
+.question {
+    padding: 20px;
+    background-color: #e3e3e3;
+    height: 20vh;
+    border-radius: 0  0 0 0;
+    font-size: 2rem;
+    font-family: 'Permanent Marker', cursive;
+    font-weight: bolder;
    
 }
 
+
 .pied {
     background-color: #681111;
-    
-    border-radius: 15px 0 0 15px;
-    height: 30vh;
+    border-radius: 0 0 15px 15px ;
+    height: 10vh;
     text-align: center;
     font-size: 2rem;
     color: #f8f8f8;
 }
+imagee {
+    
+} 
